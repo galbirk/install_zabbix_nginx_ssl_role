@@ -37,4 +37,6 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+<b>Gal Birkman, DevOps Engineer.</b><br>
+<b>email:</b> galbirkman@gmail.com<br>
+<b>GitHub:</b> https://github.com/galbirk
