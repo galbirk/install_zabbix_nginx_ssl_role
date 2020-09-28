@@ -192,6 +192,7 @@ Before you run fill the paraneters in [deafults/main.yml](defaults/main.yml), <b
 
 ```bash
 - hosts: servers
+  become: yes
   vars:
     - var1
     - var2
@@ -203,6 +204,7 @@ Every variable that will not entered above, his value will be taken from the def
 Playbook after filling [deafults/main.yml](defaults/main.yml).
 
     - hosts: servers
+      become: yes
       roles:
          - install_zabbix_nginx_ssl_role
 
