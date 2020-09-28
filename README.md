@@ -8,7 +8,8 @@ Role Variables
 --------------
 Variables are located in [deafults/main.yml](defaults/main.yml) file.
 
-## General Parameters
+**General Parameters**
+---------------------
 
 **hostname** --> Full name of the DNS pointed to the Machine IP (server.my.domain).
 **domain** --> The domain if the DNS of the server.
@@ -19,13 +20,17 @@ Variables are located in [deafults/main.yml](defaults/main.yml) file.
 **install_zabbix** --> --> Set true to install zabbix (must be **true** for first installation).
 **add_host** --> Set true just if you are installing zabbix again with existig DB and sql user.
 
-## MariaDB parameters
+**MariaDB parameters**
+---------------------
 **mysql_root_password** --> Root Password for mariaDB.
 
-## letsencrypt parameters
+
+**letsencrypt parameters**
+---------------------
 **certbot_admin_email** --> Email Address for letsencrypt certificate generation.
 
-## Zabbix parameters
+**zabbix parameters**
+---------------------
 **version** --> General version (5.0,4.0)
 **sub_version** '5.0-1' # Specifip version
 **zabbix_db_name** --> zabbix Database name.
@@ -34,7 +39,7 @@ Variables are located in [deafults/main.yml](defaults/main.yml) file.
 **admin_user** --> Admin user fir zabbix.
 **admin_password** --> Admin password for zabbix.
 
-## Zabbix Favicon parameters
+**abbix Favicon parameters
 **change_favicon** --> Set True for changing favicon.
 **favicon_src** --> Path to favicon on the local host.
 
@@ -44,16 +49,40 @@ Variables are located in [deafults/main.yml](defaults/main.yml) file.
 
 ## Zabbix Creating user parameters
 
+When you want to add one or more users, add to the list a dictionary contains all the below keys and give them values by your choice.
+
 **create_user** --> Set true to create users.
 **username** --> Username.
 **user_password** --> User Password
-**us_type: 3 # 1- Zabbix user, 2- Zabbix Admin, 3- Zabbix Super Admin.
+**user_type** --> 1- Zabbix user, 2- Zabbix Admin, 3- Zabbix Super Admin.
+**user_id:** --> IMPORTANT! Every run increase this var by 1, if you forgot the counting, set random nuber ( like 85, 869, 7996...) **Begin WITH 3!**.
+**add_to_group** --> Group to add, can be Guests or Disabled or Zabbix administrators.
+**adding_group_id** --> {{ (<user_id> + 2 }} IMPORTANT! the left opretor is user_id!
 
-#user_id: 7 # IMPORTANT! Every run increase this var by 1, if you forgot the counting, set random nuber ( like 85, 869, 7996...) START WITH 3! after first installation!
+**Example**
 
-#add_to_group: 'Zabbix administrators' # group to add, can be Guests or Disabled also.
+```bash
+create_user: false
+users:
+  - user_id: 8
+    username: gal8 
+    name: gal
+    surename: Birkman
+    user_password: 'Aa123456' 
+    user_type: 3  
+    add_to_group: 'Zabbix administrators'
+    adding_group_id: "{{ 8 + 2 }}" ## IMPORTANT! the left opretor is user_id!
 
-#adding_group_id: "{{ (<user_id> + 2 }}"
+  - user_id: 9
+    username: gal9
+    name: Gal
+    surename: Birk
+    user_password: 'Aa123456'
+    user_type: 1
+    add_to_group: 'Clients'
+    adding_group_id: "{{ 9 + 2 }}"
+```
+
 
 Example Playbook
 ----------------
