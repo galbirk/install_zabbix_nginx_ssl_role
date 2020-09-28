@@ -157,8 +157,8 @@ user_groups:
 
 ### Zabbix Parameters for installing languages ###
 
-**install_language** --> Set true if you want to install languages.
-**languages** --> For every language you want to install add line in the list with the value"{{ <language name> }}", all the options are above.
+- **install_language** --> Set true if you want to install languages.
+- **languages** --> For every language you want to install add line in the list with the value"{{ <language name> }}", all the options are above.
   
 **Example**
 
