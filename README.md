@@ -6,7 +6,7 @@ Also the role does automatic action like: creating users, creating users groups,
 
 ## Table of Contents
 - [Role Variables](#Role-Variables)
-  * [General Parameters](###General-Parameters)
+  * [General Parameters](#General-Parameters)
   * [Config Files](#Config-Files)
   * [Sssd config file](#sssd-config-file)
   * [Setting up the facts](#setting-up-the-facts)
