@@ -1,4 +1,4 @@
-Role Name
+install_zabbix_nginx_ssl_role
 =========
 
 A brief description of the role goes here.
