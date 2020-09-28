@@ -5,8 +5,8 @@ Ansible Role to install zabbix monitoring server and nginx with ssl certificate,
 Also the role does automatic action like: creating users, creating users groups, change logo and icon, install languages and configure Email settings.
 
 ## Table of Contents
-- [Role Vsrisbles](#Role Variables)
-  * [General Parameters](###General Parameters)
+- [Role Variables](#Role-Variables)
+  * [General Parameters](###General-Parameters)
   * [Config Files](#Config-Files)
   * [Sssd config file](#sssd-config-file)
   * [Setting up the facts](#setting-up-the-facts)
