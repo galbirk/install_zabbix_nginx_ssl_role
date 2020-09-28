@@ -18,7 +18,6 @@ Also the role does automatic action like: creating users, creating users groups,
   * [Zabbix Configure Email (HTML) Media Type Parameters](#Zabbix-Configure-Email-(HTML)-media-type-parameters)
   * [Zabbix Parameters for Installing Languages](#Zabbix-Parameters-for-installing-languages)
 - [Example Playbook](#Example-Playbook)
-- [Common Issues](#Common-Issues)
 - [License](#License)
 - [Author Information](#Author-Information)
 
