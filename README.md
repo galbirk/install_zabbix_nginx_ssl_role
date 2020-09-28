@@ -10,14 +10,14 @@ Variables are located in [deafults/main.yml](defaults/main.yml) file.
 
 ### General Parameters ###
 
-**hostname** --> Full name of the DNS pointed to the Machine IP (server.my.domain).
-**domain** --> The domain if the DNS of the server.
-**hostname_no_fqdn** --> The name of the server without the domain ending.
-**install_nginx** --> Set true to install nginx (must be **true** for first installation).
-**install_mariadb** --> Set true to install mariaDB (must be **true** for first installation).
-**install_php** --> Set true to install php (must be **true** for first installation).
-**install_zabbix** --> --> Set true to install zabbix (must be **true** for first installation).
-**add_host** --> Set true just if you are installing zabbix again with existig DB and sql user.
+- **hostname** --> Full name of the DNS pointed to the Machine IP (server.my.domain).
+- **domain** --> The domain if the DNS of the server.
+- **hostname_no_fqdn** --> The name of the server without the domain ending.
+- **install_nginx** --> Set true to install nginx (must be **true** for first installation).
+- **install_mariadb** --> Set true to install mariaDB (must be **true** for first installation).
+- **install_php** --> Set true to install php (must be **true** for first installation).
+- **install_zabbix** --> --> Set true to install zabbix (must be **true** for first installation).
+- **add_host** --> Set true just if you are installing zabbix again with existig DB and sql user.
 
 ### MariaDB parameters ###
 
