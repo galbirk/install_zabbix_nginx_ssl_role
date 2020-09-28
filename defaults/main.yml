@@ -2,13 +2,13 @@
 # defaults file for zabbix_nginx_ssl_role
 
 ## General parameters
-hostname: zabbix01.lmsdemo.ga
-domain: lmsdemo.ga
-hostname_no_fqdn: zabbix01
-install_nginx: false
-install_mariadb: false
-install_php: false
-install_zabbix: false
+hostname: zabbix.mydomain.com
+domain: mydomain.com
+hostname_no_fqdn: zabbix
+install_nginx: true
+install_mariadb: true
+install_php: true
+install_zabbix: true
 add_host: false # Set true just if you are installing zabbix again with existig DB.
 
 ## MariaDB parameters
