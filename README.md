@@ -8,7 +8,7 @@ Role Variables
 --------------
 Variables are located in [deafults/main.yml](defaults/main.yml) file.
 
-###General Parameters###
+### General Parameters ###
 
 **hostname** --> Full name of the DNS pointed to the Machine IP (server.my.domain).
 **domain** --> The domain if the DNS of the server.
