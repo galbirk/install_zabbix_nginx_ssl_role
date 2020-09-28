@@ -6,12 +6,12 @@ Also the role does automatic action like: creating users, creating users groups,
 
 Role Variables
 --------------
-Variable located in [deafults/main.yml]defaults/main.yml file.
+Variable located in [deafults/main.yml](defaults/main.yml) file.
 
 
 Example Playbook
 ----------------
-Before you run fill the paraneters in [deafults/main.yml]defaults/main.yml, <b>OR</b> set vars section in the playbook file:
+Before you run fill the paraneters in [deafults/main.yml](defaults/main.yml), <b>OR</b> set vars section in the playbook file:
 
 ```bash
 - hosts: servers
@@ -23,7 +23,7 @@ Before you run fill the paraneters in [deafults/main.yml]defaults/main.yml, <b>O
 ```
 Every variable that will not entered above, his value will be taken from the defaults file.
 
-Playbook after filling [deafults/main.yml]defaults/main.yml.
+Playbook after filling [deafults/main.yml](defaults/main.yml).
 
     - hosts: servers
       roles:
