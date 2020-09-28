@@ -19,16 +19,17 @@ Variables are located in [deafults/main.yml](defaults/main.yml) file.
 **install_zabbix** --> --> Set true to install zabbix (must be **true** for first installation).
 **add_host** --> Set true just if you are installing zabbix again with existig DB and sql user.
 
-###MariaDB parameters###
+### MariaDB parameters ###
+
 **mysql_root_password** --> Root Password for mariaDB.
 
 
-**letsencrypt parameters**
----------------------
+### letsencrypt parameters ###
+
 **certbot_admin_email** --> Email Address for letsencrypt certificate generation.
 
-**zabbix parameters**
----------------------
+### zabbix parameters ###
+
 **version** --> General version (5.0,4.0)
 **sub_version** '5.0-1' # Specifip version
 **zabbix_db_name** --> zabbix Database name.
@@ -37,20 +38,17 @@ Variables are located in [deafults/main.yml](defaults/main.yml) file.
 **admin_user** --> Admin user fir zabbix.
 **admin_password** --> Admin password for zabbix.
 
-**zabbix Favicon parameters
---------------------------
+### zabbix Favicon parameters ###
 
 **change_favicon** --> Set True for changing favicon.
 **favicon_src** --> Path to favicon on the local host.
 
-**Zabbix logo parameters**
---------------------------
+### Zabbix logo parameters ###
 
 **change_logo** --> Set True for changing logo.
 **logo_src** --> Path to logo svg file on the local host.
 
-**Zabbix Creating user parameters**
------------------------------------
+### Zabbix Creating user parameters ###
 When you want to add one or more users, add to the list a dictionary contains all the below keys and give them values by your choice.
 
 **create_user** --> Set true to create users.
@@ -85,8 +83,7 @@ users:
     adding_group_id: "{{ 9 + 2 }}"
 ```
 
-**Zabbix Creating user groups Parametes**
------------------------------------------
+### Zabbix Creating user groups Parametes ###
 Creating one or multiple user groups, add to the list a dictionary contains all the below keys and give them values by your choice.
 
 **create_user_group:** --> Set true to create users.
@@ -111,8 +108,7 @@ user_groups:
     debug_mode: 0
  ```
  
- **Zabbix Configure mail media type parameters**
- ----------------------------------------------
+ ### Zabbix Configure mail media type parameters ###
  
 **config_email** --> Set true to config Email settings.
 **smtp_server** --> SMTP server
@@ -126,8 +122,7 @@ user_groups:
 **username** --> username for smtp authentication
 **password** --> password for smtp authentication
 
-**Zabbix Configure Email (HTML) media type parameters**
--------------------------------------------------------
+### Zabbix Configure Email (HTML) media type parameters ###
 
 **config_email_html** --> Set true to config Email settings.
 **html_smtp_server** --> SMTP server
@@ -142,8 +137,7 @@ user_groups:
 **html_password** --> password for smtp authentication
 
 
-**Zabbix Parameters for installing languages**
-----------------------------------------------
+### Zabbix Parameters for installing languages ###
 
 **install_language** --> Set true if you want to install languages.
 
