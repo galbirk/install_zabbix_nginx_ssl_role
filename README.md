@@ -9,7 +9,6 @@ Role Variables
 Variables are located in [deafults/main.yml](defaults/main.yml) file.
 
 ###General Parameters###
----------------------
 
 **hostname** --> Full name of the DNS pointed to the Machine IP (server.my.domain).
 **domain** --> The domain if the DNS of the server.
@@ -20,8 +19,7 @@ Variables are located in [deafults/main.yml](defaults/main.yml) file.
 **install_zabbix** --> --> Set true to install zabbix (must be **true** for first installation).
 **add_host** --> Set true just if you are installing zabbix again with existig DB and sql user.
 
-**MariaDB parameters**
----------------------
+###MariaDB parameters###
 **mysql_root_password** --> Root Password for mariaDB.
 
 
