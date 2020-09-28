@@ -1,0 +1,5 @@
+{% for grp in user_groups %} 
+
+insert into zabbix.usrgrp(usrgrpid,name,gui_access,users_status,debug_mode) values ({{ grp['user_group_id'] }},'{{ grp['user_group_name'] }}',{{ grp['gui_access'] }},{{ grp['users_status'] }}, {{ grp['debug_mode'] }});
+
+{% endfor %}

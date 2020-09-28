@@ -1,0 +1,51 @@
+---
+- name: Copy sql script
+  template:
+   src: create_zabbix_db.sql.j2
+   dest: /tmp/create_zabbix_db.sql
+   mode: '0766'
+
+- name: Run sql Script on DataBase
+  mysql_db:
+    name: mysql
+    state: import
+    target: /tmp/create_zabbix_db.sql
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+    login_unix_socket: /run/mysqld/mysqld.sock
+  ignore_errors: true
+
+- name: Remove Script from server
+  file:
+    path: /tmp/create_zabbix_db.sql
+    state: absent
+
+- name: Import dump file to DB
+  mysql_db:
+    login_host: localhost
+    name: "{{ zabbix_db_name }}"
+    state: import
+    target: /usr/share/doc/zabbix-server-mysql/create.sql.gz
+    login_user: "{{ zabbix_db_user }}"
+    login_password: "{{ zabbix_db_password }}"
+    login_unix_socket: /run/mysqld/mysqld.sock
+  ignore_errors: yes
+
+- name: Configure Zabbix
+  lineinfile:
+    path: /etc/zabbix/zabbix_server.conf
+    regexp: '^# DBPassword='
+    line: 'DBPassword={{ zabbix_db_password }}'
+
+- name: Configure Zabbix
+  lineinfile:
+    path: /etc/zabbix/zabbix_server.conf
+    regexp: '^DBName='
+    line: 'DBName={{ zabbix_db_name }}'
+
+
+- name: Configure Zabbix
+  lineinfile:
+    path: /etc/zabbix/zabbix_server.conf
+    regexp: '^DBUser='
+    line: 'DBUser={{ zabbix_db_user }}'

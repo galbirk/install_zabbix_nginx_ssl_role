@@ -1,0 +1,5 @@
+---
+- name: Copy logo to zabbix-server
+  copy:
+    src: "{{ logo_src }}"
+    dest: /usr/share/zabbix/assets/img/icon-sprite.svg

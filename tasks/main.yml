@@ -1,0 +1,45 @@
+---
+# tasks file for zabbix_nginx_ssl_role
+- include: nginx_install.yml
+  when: install_nginx
+
+- include: mariadb_install.yml
+  when: install_mariadb
+
+- include: php_install.yml
+  when: install_php
+
+- include: zabbix_install.yml
+  when: install_zabbix
+
+- include: zabbix_db.yml
+  when: install_zabbix
+
+- include: nginx_configure.yml
+
+- include: letsencrypt.yml
+
+- include: php_configure.yml
+
+- include: after_installation.yml
+
+- include: change_favicon.yml
+  when: change_favicon
+
+- include: change_logo.yml
+  when: change_logo
+
+- include: create_user_group.yml
+  when: create_user_group
+
+- include: create_user.yml
+  when: create_user
+
+- include: config_email.yml
+  when: config_email
+
+- include: config_email_html.yml
+  when: config_email_html
+
+- include: install_language.yml
+  when: install_language

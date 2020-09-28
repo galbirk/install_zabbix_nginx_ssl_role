@@ -1,0 +1,4 @@
+- name: Copy favicon to zabbix-server
+  copy:
+    src: "{{ favicon_src }}"
+    dest: /usr/share/zabbix/favicon.ico

@@ -1,0 +1,35 @@
+---
+- name: update apt
+  apt:
+    update_cache: yes
+
+- name: install letsencrypt
+  apt:
+    name: ['letsencrypt', 'certbot', 'python3-certbot-nginx']
+    state: present
+
+- name: Check if certificate already exists.
+  stat:
+    path: /etc/letsencrypt/live/{{ hostname }}/cert.pem
+  register: letsencrypt_cert
+ 
+- name: Generate new certificate if one doesn't exist.
+  command: /usr/bin/certbot --nginx -d {{ hostname }} --non-interactive --agree-tos -m {{ certbot_admin_email }}
+  when: not letsencrypt_cert.stat.exists
+
+- name: reload nginx and php
+  service:
+    name: "{{ item }}"
+    state: reloaded
+  with_items:
+    - nginx
+    - php7.4-fpm
+
+- name: Add cron job for certbot renewal (if configured).
+  cron:
+    name: Certbot automatic renewal.
+    job: /usr/bin/certbot renew --no-self-upgrade  >> /var/log/letsencrypt/renew.log
+    minute: "30"
+    hour: "3"
+    user: root
+  ignore_errors: yes

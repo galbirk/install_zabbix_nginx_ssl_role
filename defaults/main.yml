@@ -1,0 +1,156 @@
+---
+# defaults file for zabbix_nginx_ssl_role
+
+## General parameters
+hostname: zabbix01.lmsdemo.ga
+domain: lmsdemo.ga
+hostname_no_fqdn: zabbix01
+install_nginx: false
+install_mariadb: false
+install_php: false
+install_zabbix: false
+add_host: false # Set true just if you are installing zabbix again with existig DB.
+
+## MariaDB parameters
+mysql_root_password: 'Aa123456'
+
+## letsencrypt parameters
+certbot_admin_email: galbirkman@gmail.com
+
+## Zabbix parameters
+version: '5.0' # General version (5.0,4.0)
+sub_version: '5.0-1' # Specifip version
+zabbix_db_name: zabbix #_{{ hostname_no_fqdn }}
+zabbix_db_user: zabbix
+zabbix_db_password: 'Aa123456'
+admin_user: gal
+admin_password: Aa123456
+
+## Zabbix Favicon parameters
+change_favicon: false # Set True for changing favicon
+favicon_src: ../files/favicon.ico # Path to favicon on the local host.
+
+## Zabbix logo parameters
+change_logo: false # Set True for changing logo.
+logo_src: ../files/logo.svg # Path to logo svg file on the local host.
+
+## Zabbix Creating user parameters
+
+# create_user: false
+
+#username: username
+
+#user_password: # User Password
+
+#user_type: 3 # 1- Zabbix user, 2- Zabbix Admin, 3- Zabbix Super Admin.
+
+#user_id: 7 # IMPORTANT! Every run increase this var by 1, if you forgot the counting, set random nuber ( like 85, 869, 7996...) START WITH 3! after first installation!
+
+#add_to_group: 'Zabbix administrators' # group to add, can be Guests or Disabled also.
+
+#adding_group_id: "{{ (<user_id> + 2 }}"
+
+create_user: false
+users:
+  - user_id: 8
+    username: gal8 
+    name: gal
+    surename: Birkman
+    user_password: 'Aa123456' 
+    user_type: 3  
+    add_to_group: 'Zabbix administrators'
+    adding_group_id: "{{ 8 + 2 }}" ## IMPORTANT! the left opretor is user_id!
+
+  - user_id: 9
+    username: gal9
+    name: Gal
+    surename: Birk
+    user_password: 'Aa123456'
+    user_type: 1
+    add_to_group: 'Clients'
+    adding_group_id: "{{ 9 + 2 }}"
+
+
+## Zabbix Creating user groups Parametes
+
+## Creating one or multiple user groups, if you want to create just one so set one object list, if you want to create more then 1 add object like the first one witj all the mentioned keys and choose for each his value!
+
+#create_user_group: false
+
+# user_group_id: # IMPORTANT! Every run or user group increase this var by 1, if you forgot the counting, set random nuber ( like 85, 869, 7996...) START WITH 13 IN first installation!
+# user_group_name: # user group name
+
+# gui_access: # Set 0 for system default gui Access
+
+# users_status: # Set 1 for user status ( prefer set 0)
+
+# debug_mode: # Set 1 for debug mode
+
+create_user_group: false
+
+user_groups:
+  - user_group_id: 13
+    user_group_name: 'Clients'
+    gui_access: 1
+    users_status: 0
+    debug_mode: 0
+
+  - user_group_id: 14
+    user_group_name: 'Support'
+    gui_access: 1
+    users_status: 0
+    debug_mode: 0
+
+## Zabbix Configure mail media type parameters
+config_email: false
+smtp_server: smtp.gmail.com # SMTP server
+smtp_domain: gmail.com # SMTP provider domain name
+smtp_email: galbirk@gmail.com # SMTP email account
+smtp_authentication: 1 # Set 0 for None 1 - username and password
+smtp_port: 25
+smtp_security: 1  # Set 0 for None 1 for STARTTLS 2 for TLS/SSL
+smtp_verify_peer: 1 # Set 1 for true 0 for false (smtp security sub parameter)
+smtp_verify_host: 0 # Set 1 for true 0 for false (smtp security sub parameter)
+username: galbirk # username for smtp authentication
+password: 'Aa123456'  # password for smtp authentication
+
+
+
+## Zabbix Configure Email (HTML) media type parameters
+config_email_html: false
+html_smtp_server: smtp.gmail.com # SMTP server
+html_smtp_domain: gmail.com # SMTP provider domain name
+html_smtp_email: galbirk@gmail.com # SMTP email account
+html_smtp_authentication: 1 # Set 0 for None 1 - username and password
+html_smtp_port: 25
+html_smtp_security: 1  # Set 0 for None 1 for STARTTLS 2 for TLS/SSL
+html_smtp_verify_peer: 1 # Set 1 for true 0 for false (smtp security sub parameter)
+html_smtp_verify_host: 0 # Set 1 for true 0 for false (smtp security sub parameter)
+html_username: galbirk # username for smtp authentication
+html_password: 'Aa123456'  # password for smtp authentication
+
+## Zabbix Parameters for installing languages
+install_language: true
+
+# Language options:
+english: en_US
+Chinese: zh-CN
+Czech: cs_CZ
+French: fr_FR
+Hebrew: he_IL
+Italian: it_IT
+Korean: ko_KR
+Japanese: ja_JP
+Norwegian: nb_NO
+Polish: pl_PL
+Portuguese_Portogal: pt_PT
+Portuguese_Brazil: pt_BR
+Russian: ru_RU
+Slovak: sk_SK
+Turkish: tr_TR
+Ukrainian: uk_UA
+
+languages: # For every language you want to install add line in the list with the value"{{ <language name> }}", all the options are above.
+  - "{{ Czech }}"
+  - "{{ Polish }}"
+  - "{{ Italian }}"

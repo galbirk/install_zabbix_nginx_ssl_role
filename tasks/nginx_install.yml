@@ -1,0 +1,25 @@
+---
+- name: Update apt
+  apt:
+    update_cache: yes
+
+- name: Install nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Stop nginx Service
+  service:
+    name: nginx
+    state: stopped
+
+- name: Start and Enable nginx Service
+  service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Health Check to nginx web service
+  uri:
+    url: http://localhost
+    validate_certs: no

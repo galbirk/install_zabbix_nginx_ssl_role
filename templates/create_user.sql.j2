@@ -1,0 +1,9 @@
+{% for user in users %} 
+
+insert into zabbix.users(userid,alias,name,surname,passwd,url,attempt_ip,type) values ({{ user['user_id'] }},'{{ user['username'] }}','{{ user['name'] }}','{{user['surename'] }}',md5('{{ user['user_password'] }}'),'https://{{ hostname }}/zabbix.php?action=dashboard.view', ' ',{{ user['user_type'] }});
+
+SET @v1 := (SELECT usrgrpid from zabbix.usrgrp where name='{{ user['add_to_group'] }}');
+
+insert into zabbix.users_groups(id,usrgrpid,userid) values ('{{ user['adding_group_id'] }}',@v1,'{{ user['user_id'] }}');
+
+{%  endfor %}

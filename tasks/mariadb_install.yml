@@ -1,0 +1,43 @@
+- name: Install MariaDB 
+  apt:
+    name: ['mariadb-server', 'mariadb-client']
+    state: present
+
+- name: Stop mariadb Service
+  service:
+    name: mariadb
+    state: stopped
+
+- name: Start and Enable mariadb Service
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+
+- name: Adds Python MySQL support
+  apt:
+    name: ['python3-dev', 'libmysqlclient-dev','python3-pip','python3-mysqldb']
+    state: present
+
+- name: Install Pymysql
+  pip:
+    name: PyMySQL
+
+- name: Sets the root password 
+  mysql_user: name=root password={{ mysql_root_password }} state=present login_unix_socket=/run/mysqld/mysqld.sock login_password=Aa123456 
+
+
+- name: Deletes anonymous MySQL server user for localhost
+  mysql_user: login_password={{ mysql_root_password }} name="" state=absent login_unix_socket=/run/mysqld/mysqld.sock
+
+- name: Secures the MySQL root user for IPV6 localhost (::1)
+  mysql_user: user="root" password={{ mysql_root_password }} host="::1" login_user=root login_password={{ mysql_root_password }} login_unix_socket=/run/mysqld/mysqld.sock
+
+- name: Secures the MySQL root user for IPV4 localhost (127.0.0.1)
+  mysql_user: user="root" password={{ mysql_root_password }} host="127.0.0.1" login_user=root login_password={{ mysql_root_password }} login_unix_socket=/run/mysqld/mysqld.sock
+
+- name: Secures the MySQL root user for localhost domain (localhost)
+  mysql_user: user="root" password={{ mysql_root_password }} host="localhost" login_user=root login_password={{ mysql_root_password }} login_unix_socket=/run/mysqld/mysqld.sock
+
+- name: Removes the MySQL test database
+  mysql_db: db=test state=absent login_user=root login_password={{ mysql_root_password }} login_unix_socket=/run/mysqld/mysqld.sock

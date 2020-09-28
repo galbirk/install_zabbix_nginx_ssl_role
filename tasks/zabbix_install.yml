@@ -1,0 +1,18 @@
+---
+- name: Download zabbix
+  get_url:
+    url: https://repo.zabbix.com/zabbix/{{ version }}/ubuntu/pool/main/z/zabbix-release/zabbix-release_{{ sub_version }}+focal_all.deb
+    dest: /tmp/
+
+- name: Install Zabbix deb pkg
+  apt:
+    deb: /tmp/zabbix-release_{{ sub_version }}+focal_all.deb
+
+- name: apt update
+  apt:
+    update_cache: yes
+
+- name: Install zabbix backend,frontend and agent
+  apt:
+    name: ['zabbix-server-mysql', 'zabbix-frontend-php', 'zabbix-agent']
+    state: present

@@ -1,0 +1,2 @@
+update zabbix.users set passwd=md5('{{ admin_password }}') where alias='Admin';
+update zabbix.users set alias='{{ admin_user }}' where alias='Admin';

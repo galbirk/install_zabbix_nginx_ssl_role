@@ -1,0 +1,21 @@
+---
+- name: Copy sql script for Config email (HTML).
+  template:
+   src: config_email_html.sql.j2
+   dest: /tmp/config_email_html.sql
+   mode: '0766'
+
+- name: Run sql Script on DataBase
+  mysql_db:
+    name: mysql
+    state: import
+    target: /tmp/config_email_html.sql
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+    login_unix_socket: /run/mysqld/mysqld.sock
+  ignore_errors: true
+
+- name: Remove Script from server
+  file:
+    path: /tmp/config_email_html.sql
+    state: absent 

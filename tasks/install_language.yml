@@ -1,0 +1,11 @@
+---
+- name: Install language with locale
+  shell: locale-gen "{{ item }}"
+  args:
+    executable: /bin/bash
+  with_items: "{{ languages }}"
+
+- name: Restart php service
+  service:
+    name: php7.4-fpm
+    state: restarted

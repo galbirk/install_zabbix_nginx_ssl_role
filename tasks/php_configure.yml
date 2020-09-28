@@ -1,0 +1,52 @@
+---
+- name: Change php configuration file
+  lineinfile:
+    path: /etc/zabbix/php-fpm.conf
+    regexp: '^php_value[memory_limit]'
+    line: php_value[memory_limit] = 128M
+
+- name: Change php configuration file
+  lineinfile:
+    path: /etc/zabbix/php-fpm.conf
+    regexp: '^php_value[max_execution_time].*'
+    line: php_value[max_execution_time] = 300
+ 
+- name: Change php configuration file
+  lineinfile:
+    path: /etc/zabbix/php-fpm.conf
+    regexp: '^php_value[post_max_size].*'
+    line: php_value[post_max_size] = 16M
+
+- name: Change php configuration file
+  lineinfile:
+    path: /etc/zabbix/php-fpm.conf
+    regexp: '^php_value[upload_max_filesize].*'
+    line: php_value[upload_max_filesize] = 2M
+
+- name: Chage php configuration file
+  lineinfile:
+    path: /etc/zabbix/php-fpm.conf
+    regexp: '^php_value[max_input_time].*'
+    line: php_value[max_input_time] = 300
+
+- name: Chage php configuration file
+  lineinfile:
+    path: /etc/zabbix/php-fpm.conf
+    regexp: '^php_value[max_input_vars].*'
+    line: php_value[max_input_vars] = 10000
+
+- name: Chage php configuration file
+  lineinfile:
+    path: /etc/zabbix/php-fpm.conf
+    regexp: '^; php_value[date.timezone].*'
+    line: php_value[date.timezone] = America/Chicago
+
+- name: Restart php7.4-fpm servie
+  service:
+    name: php7.4-fpm
+    state: restarted
+
+- name: Start zabbix-server
+  service:
+    name: zabbix-server
+    enabled: yes
