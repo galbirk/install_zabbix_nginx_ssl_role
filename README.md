@@ -55,7 +55,7 @@ When you want to add one or more users, add to the list a dictionary contains al
 - **username** --> Username.
 - **user_password** --> User Password
 - **user_type** --> 1- Zabbix user, 2- Zabbix Admin, 3- Zabbix Super Admin.
-- **user_id:** --> IMPORTANT! Every run increase this var by 1, if you forgot the counting, set random nuber ( like 85, 869, 7996...) **Begin WITH 3!**.
+- **user_id** --> IMPORTANT! Every run increase this var by 1, if you forgot the counting, set random nuber ( like 85, 869, 7996...) **Begin WITH 3!**.
 - **add_to_group** --> Group to add, can be Guests or Disabled or Zabbix administrators.
 - **adding_group_id** --> {{ (<user_id> + 2 }} IMPORTANT! the left opretor is user_id!
 
@@ -164,9 +164,9 @@ Turkish: tr_TR
 Ukrainian: uk_UA
 
 languages:
-  - "{{ Czech }}"
-  - "{{ Polish }}"
-  - "{{ Italian }}"
+    - "{{ Czech }}"
+    - "{{ Polish }}"
+    - "{{ Italian }}"
 ```
 
 Example Playbook
