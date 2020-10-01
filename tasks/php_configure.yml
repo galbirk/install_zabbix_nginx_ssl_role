@@ -8,37 +8,37 @@
 - name: Change php configuration file
   lineinfile:
     path: /etc/zabbix/php-fpm.conf
-    regexp: '^php_value[max_execution_time].*'
+    regexp: '^php_value[max_execution_time](.*)'
     line: php_value[max_execution_time] = 300
  
 - name: Change php configuration file
   lineinfile:
     path: /etc/zabbix/php-fpm.conf
-    regexp: '^php_value[post_max_size].*'
+    regexp: '^php_value[post_max_size](.*)'
     line: php_value[post_max_size] = 16M
 
 - name: Change php configuration file
   lineinfile:
     path: /etc/zabbix/php-fpm.conf
-    regexp: '^php_value[upload_max_filesize].*'
+    regexp: '^php_value[upload_max_filesize](.*)'
     line: php_value[upload_max_filesize] = 2M
 
 - name: Chage php configuration file
   lineinfile:
     path: /etc/zabbix/php-fpm.conf
-    regexp: '^php_value[max_input_time].*'
+    regexp: '^php_value[max_input_time](.*)'
     line: php_value[max_input_time] = 300
 
 - name: Chage php configuration file
   lineinfile:
     path: /etc/zabbix/php-fpm.conf
-    regexp: '^php_value[max_input_vars].*'
+    regexp: '^php_value[max_input_vars](.*)'
     line: php_value[max_input_vars] = 10000
 
 - name: Chage php configuration file
   lineinfile:
     path: /etc/zabbix/php-fpm.conf
-    regexp: '^; php_value[date.timezone].*'
+    regexp: '^; php_value[date.timezone](.*)'
     line: php_value[date.timezone] = America/Chicago
 
 - name: Restart php7.4-fpm servie
