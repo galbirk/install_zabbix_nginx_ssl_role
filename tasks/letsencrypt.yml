@@ -17,6 +17,13 @@
   command: /usr/bin/certbot --nginx -d {{ hostname }} --non-interactive --agree-tos -m {{ certbot_admin_email }}
   when: not letsencrypt_cert.stat.exists
 
+
+- name: Add nginx configuration
+  template:
+    src: nginx.conf.j2
+    dest: /etc/zabbix/nginx.conf
+    mode: '0644'
+
 - name: reload nginx and php
   service:
     name: "{{ item }}"

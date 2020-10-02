@@ -4,15 +4,6 @@
     name: zabbix-nginx-conf
     state: present
 
-- name: Config zabbix/nginx.conf
-  lineinfile:
-    path: /etc/zabbix/nginx.conf
-    regexp: "{{ item.regexp }}"
-    line: "{{ item.line }}"
-  with_items:
-    - { regexp: '^#.*listen.*80;', line: 'listen    80;'}
-    - { regexp: '^#.*server_name.*example.com;', line: 'server_name     {{ hostname }};'}
-
 - name: Restart Nginx
   service: 
     name: nginx
